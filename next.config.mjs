@@ -5,6 +5,14 @@ const nextConfig = {
     agentFeedback: true,
   },
   cacheComponents: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+      },
+    ],
+  },
   partialPrefetching: true,
   reactCompiler: true,
   turbopack: {
