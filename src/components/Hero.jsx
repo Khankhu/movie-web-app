@@ -1,73 +1,63 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { HeroSlide } from "@/components/HeroSlide";
 
 export function Hero({ movies }) {
+  const [api, setApi] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => {
-      if (prev === movies.length - 1) {
-        return 0;
-      } else {
-        return prev + 1;
-      }
-    });
-  }, [movies.length]);
-
   useEffect(() => {
-    const id = setInterval(handleNext, 5000);
-    return () => clearInterval(id);
-  }, [currentIndex, handleNext]);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => {
-      if (prev === 0) {
-        return movies.length - 1;
-      } else {
-        return prev - 1;
-      }
-    });
-  };
+    if (!api) return;
+    const handleSelect = () => setCurrentIndex(api.selectedScrollSnap());
+    api.on("select", handleSelect);
+    return () => api.off("select", handleSelect);
+  }, [api]);
 
   return (
-    <section className="h-200 relative">
-      <HeroSlide movie={movies[currentIndex]} />
-      <div className="absolute left-10 top-1/2 -translate-y-1/2">
-        <Button
-          size="icon"
-          className="rounded-full size-10 hover:bg-fuchsia-500 active:scale-90"
-          onClick={handlePrev}
-        >
-          <ChevronLeft />
-        </Button>
-      </div>
+    <Carousel
+      setApi={setApi}
+      opts={{ loop: true }}
+      plugins={[Autoplay({ delay: 5000, stopOnInteraction: false })]}
+    >
+      <CarouselContent className="ml-0">
+        {movies.map((movie) => (
+          <CarouselItem key={movie.id} className="relative h-200 pl-0">
+            <HeroSlide movie={movie} />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
 
-      <div className="absolute right-10 top-1/2 -translate-y-1/2">
-        <Button
-          size="icon"
-          className="rounded-full size-10 hover:bg-fuchsia-500 active:scale-90"
-          onClick={handleNext}
-        >
-          <ChevronRight />
-        </Button>
-      </div>
+      <CarouselPrevious
+        variant="default"
+        className="left-10 size-10 hover:bg-fuchsia-500 active:scale-90"
+      />
+      <CarouselNext
+        variant="default"
+        className="right-10 size-10 hover:bg-fuchsia-500 active:scale-90"
+      />
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
         {movies.map(({ id }, index) => (
           <button
             key={id}
+            aria-label={`Go to slide ${index + 1}`}
             className={cn(
-              "h-3 rounded-full transition-all duration-400",
-              index === currentIndex ? "w-7 bg-primary" : "w-3 bg-white/60",
+              "h-2 rounded-full transition-all duration-300",
+              index === currentIndex ? "w-6 bg-primary" : "w-2 bg-white/50",
             )}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => api?.scrollTo(index)}
           />
         ))}
       </div>
-    </section>
+    </Carousel>
   );
 }

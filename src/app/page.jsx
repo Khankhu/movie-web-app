@@ -6,7 +6,6 @@ export default async function HomePage() {
   const detailedMovies = await Promise.all(
     movies.map((movie) => getMovieDetails(movie.id)),
   );
-  // console.log(movies);
 
   return (
     <main>

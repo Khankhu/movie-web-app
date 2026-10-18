@@ -14,6 +14,7 @@ export function HeroSlide({ movie }) {
     backdrop_path,
     runtime,
   } = movie;
+
   const year = release_date.slice(0, 4);
   return (
     <>
@@ -37,7 +38,7 @@ export function HeroSlide({ movie }) {
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-yellow-500 text-black">
               <Star className="fill-current size-4" />
-              <span className="font-bold">{vote_average}</span>
+              <span className="font-bold">{vote_average?.toFixed(1)}</span>
             </div>
             <span>{year}</span>
             <span>{runtime} min</span>
