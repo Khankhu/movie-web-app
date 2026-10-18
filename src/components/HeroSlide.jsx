@@ -1,8 +1,7 @@
 import { Info, Play, Star } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-
-const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/original";
+import { TMDB_IMAGE_URL } from "@/lib/tmdb";
 
 export function HeroSlide({ movie }) {
   const {
@@ -19,7 +18,7 @@ export function HeroSlide({ movie }) {
   return (
     <>
       <Image
-        src={`${TMDB_IMAGE_URL}${backdrop_path}`}
+        src={`${TMDB_IMAGE_URL}/original${backdrop_path}`}
         alt={title}
         fill
         className="object-cover"

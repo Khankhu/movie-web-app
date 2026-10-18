@@ -1,9 +1,11 @@
-const BASE_URL = "https://api.themoviedb.org/3";
 const token = process.env.TMDB_ACCESS_TOKEN;
+const BASE_URL = "https://api.themoviedb.org/3";
+export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p";
 
 export async function getNowPlayingMovies() {
   const res = await fetch(
     `${BASE_URL}/movie/now_playing?language=en-US&page=1`,
+
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -30,4 +32,21 @@ export async function getMovieDetails(id) {
   }
   const data = await res.json();
   return data;
+}
+
+export async function getMoviesByCategory(category) {
+  const res = await fetch(
+    `${BASE_URL}/movie/${category}?language=en-US&page=1`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      next: { revalidate: 3600 },
+    },
+  );
+  if (!res.ok) {
+    throw new Error(`Failed to fetch movies ${category}: ${res.status}`);
+  }
+  const data = await res.json();
+  return data.results;
 }

@@ -14,7 +14,7 @@ import { HeroSlide } from "@/components/HeroSlide";
 export function Hero({ movies }) {
   const [api, setApi] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  // console.log("api:", api);
   useEffect(() => {
     if (!api) return;
     const handleSelect = () => setCurrentIndex(api.selectedScrollSnap());
