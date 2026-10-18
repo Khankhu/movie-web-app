@@ -15,7 +15,7 @@ export function HeroSlide({ movie }) {
     runtime,
   } = movie;
 
-  const year = release_date.slice(0, 4);
+  const year = release_date?.slice(0, 4) ?? "N/A";
   return (
     <>
       <Image
@@ -38,12 +38,14 @@ export function HeroSlide({ movie }) {
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-yellow-500 text-black">
               <Star className="fill-current size-4" />
-              <span className="font-bold">{vote_average?.toFixed(1)}</span>
+              <span className="font-bold">
+                {vote_average?.toFixed(1) ?? "N/A"}
+              </span>
             </div>
             <span>{year}</span>
-            <span>{runtime} min</span>
+            <span>{runtime ? `${runtime} min` : "N/A"}</span>
             <div className="flex items-center gap-2">
-              {genres.map(({ id, name }, index) => (
+              {genres?.map(({ id, name }, index) => (
                 <span key={id}>
                   {index > 0 && "• "}
                   {name}
