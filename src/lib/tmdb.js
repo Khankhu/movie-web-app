@@ -5,7 +5,6 @@ export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p";
 export async function getNowPlayingMovies() {
   const res = await fetch(
     `${BASE_URL}/movie/now_playing?language=en-US&page=1`,
-
     {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { MovieRow } from "@/components/MovieRow";
 import {
   getMovieDetails,
   getMoviesByCategory,
@@ -6,15 +7,16 @@ import {
 } from "@/lib/tmdb";
 
 export default async function HomePage() {
-  const movies = await getNowPlayingMovies();
+  const nowPlayingMovies = await getNowPlayingMovies();
   const detailedMovies = await Promise.all(
-    movies.map((movie) => getMovieDetails(movie.id)),
+    nowPlayingMovies.map((movie) => getMovieDetails(movie.id)),
   );
   const upcomingMovies = await getMoviesByCategory("upcoming");
 
   return (
     <main>
       <Hero movies={detailedMovies} />
+      <MovieRow heading="Upcoming" movies={upcomingMovies} />
     </main>
   );
 }
