@@ -10,7 +10,7 @@ export function MovieCard({ movie }) {
           src={`${TMDB_IMAGE_URL}/w500${poster_path}`}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover rounded-xl"
         />
       </div>
       <p>{title}</p>
