@@ -12,11 +12,15 @@ export default async function HomePage() {
     nowPlayingMovies.map((movie) => getMovieDetails(movie.id)),
   );
   const upcomingMovies = await getMoviesByCategory("upcoming");
+  const popularMovies = await getMoviesByCategory("popular");
+  const topRatedMovies = await getMoviesByCategory("top_rated");
 
   return (
     <main>
       <Hero movies={detailedMovies} />
       <MovieRow heading="Upcoming" movies={upcomingMovies} />
+      <MovieRow heading="Popular" movies={popularMovies} />
+      <MovieRow heading="Top Rated" movies={topRatedMovies} />
     </main>
   );
 }
