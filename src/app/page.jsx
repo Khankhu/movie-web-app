@@ -16,7 +16,7 @@ export default async function HomePage() {
   const topRatedMovies = await getMoviesByCategory("top_rated");
 
   return (
-    <main>
+    <main className="flex flex-col gap-10 pb-10">
       <Hero movies={detailedMovies} />
       <MovieRow heading="Upcoming" movies={upcomingMovies} />
       <MovieRow heading="Popular" movies={popularMovies} />
