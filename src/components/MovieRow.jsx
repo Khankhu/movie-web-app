@@ -10,7 +10,7 @@ import {
 export function MovieRow({ movies, heading }) {
   return (
     <div className="max-w-screen-2xl mx-auto px-5">
-      <h2>{heading}</h2>
+      <h2 className="text-3xl font-extrabold tracking-tight mb-2">{heading}</h2>
       <Carousel>
         <CarouselContent>
           {movies.map((movie) => (

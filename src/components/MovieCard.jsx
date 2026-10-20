@@ -13,7 +13,7 @@ export function MovieCard({ movie }) {
           className="object-cover rounded-xl"
         />
       </div>
-      <p>{title}</p>
+      <p className="line-clamp-2 font-semibold mt-2">{title}</p>
     </div>
   );
 }
