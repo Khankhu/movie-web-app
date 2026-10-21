@@ -7,10 +7,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export function MovieRow({ movies, heading }) {
+export function MovieRow({ movies, heading, description }) {
   return (
     <div className="max-w-screen-2xl mx-auto px-5">
-      <h2 className="text-3xl font-extrabold tracking-tight mb-2">{heading}</h2>
+      <div className="flex justify-between items-center mb-1">
+        <h2 className="text-3xl font-extrabold tracking-tight">{heading}</h2>
+        <span>See all →</span>
+      </div>
+
+      <p className="mb-2.5 text-muted-foreground">{description}</p>
       <Carousel className="-mx-2">
         <CarouselContent className="p-2">
           {movies.map((movie) => (

@@ -18,9 +18,21 @@ export default async function HomePage() {
   return (
     <main className="flex flex-col gap-10 pb-10">
       <Hero movies={detailedMovies} />
-      <MovieRow heading="Upcoming Movies" movies={upcomingMovies} />
-      <MovieRow heading="Popular Movies" movies={popularMovies} />
-      <MovieRow heading="Top Rated Movies" movies={topRatedMovies} />
+      <MovieRow
+        heading="Upcoming Movies"
+        description="Coming soon to theaters"
+        movies={upcomingMovies}
+      />
+      <MovieRow
+        heading="Popular Movies"
+        description="What everyone is watching right now"
+        movies={popularMovies}
+      />
+      <MovieRow
+        heading="Top Rated Movies"
+        description="The highest-rated films of all time"
+        movies={topRatedMovies}
+      />
     </main>
   );
 }
