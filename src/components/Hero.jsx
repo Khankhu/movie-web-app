@@ -29,7 +29,7 @@ export function Hero({ movies }) {
     >
       <CarouselContent className="ml-0">
         {movies.map((movie) => (
-          <CarouselItem key={movie.id} className="relative h-200 pl-0">
+          <CarouselItem key={movie.id} className="relative h-210 pl-0">
             <HeroSlide movie={movie} />
           </CarouselItem>
         ))}
