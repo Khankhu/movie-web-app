@@ -20,16 +20,19 @@ export default async function HomePage() {
       <Hero movies={detailedMovies} />
       <MovieRow
         heading="Upcoming Movies"
-        description="Coming soon to theaters"
+        category="upcoming"
+        description="New and upcoming releases"
         movies={upcomingMovies}
       />
       <MovieRow
         heading="Popular Movies"
+        category="popular"
         description="What everyone is watching right now"
         movies={popularMovies}
       />
       <MovieRow
         heading="Top Rated Movies"
+        category="top_rated"
         description="The highest-rated films of all time"
         movies={topRatedMovies}
       />
