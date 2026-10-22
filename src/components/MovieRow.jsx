@@ -1,3 +1,4 @@
+"use client";
 import { MovieCard } from "@/components/MovieCard";
 import {
   Carousel,
@@ -6,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import WheelGesturesPlugin from "embla-carousel-wheel-gestures";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -16,14 +18,19 @@ export function MovieRow({ movies, heading, description, category }) {
         <h2 className="text-3xl font-extrabold tracking-tight">{heading}</h2>
         <Link
           href={`/category/${category}`}
-          className="text-primary text-sm font-semibold flex items-center gap-1"
+          className="group text-primary text-sm font-semibold flex items-center gap-1 hover:opacity-80"
         >
-          See all <ArrowRight className="size-4" />
+          See all
+          <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform duration-200" />
         </Link>
       </div>
 
       <p className="mb-2.5 text-muted-foreground">{description}</p>
-      <Carousel className="-mx-2">
+      <Carousel
+        opts={{ slidesToScroll: "auto", dragFree: true }}
+        plugins={[WheelGesturesPlugin()]}
+        className="-mx-2"
+      >
         <CarouselContent className="p-2">
           {movies.map((movie) => (
             <CarouselItem key={movie.id} className="basis-[15%]">
