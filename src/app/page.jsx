@@ -4,6 +4,7 @@ import {
   getMovieDetails,
   getMoviesByCategory,
   getNowPlayingMovies,
+  getTrendingMovies,
 } from "@/lib/tmdb";
 
 export default async function HomePage() {
@@ -11,6 +12,7 @@ export default async function HomePage() {
   const detailedMovies = await Promise.all(
     nowPlayingMovies.map((movie) => getMovieDetails(movie.id)),
   );
+  const trendingMovies = await getTrendingMovies();
   const upcomingMovies = await getMoviesByCategory("upcoming");
   const popularMovies = await getMoviesByCategory("popular");
   const topRatedMovies = await getMoviesByCategory("top_rated");
@@ -18,6 +20,12 @@ export default async function HomePage() {
   return (
     <main className="flex flex-col gap-10 pb-10">
       <Hero movies={detailedMovies} />
+      <MovieRow
+        heading="Trending Movies"
+        category="trending"
+        description="What's hot this week"
+        movies={trendingMovies}
+      />
       <MovieRow
         heading="Upcoming Movies"
         category="upcoming"

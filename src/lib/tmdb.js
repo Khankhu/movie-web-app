@@ -49,3 +49,17 @@ export async function getMoviesByCategory(category) {
   const data = await res.json();
   return data.results;
 }
+
+export async function getTrendingMovies() {
+  const res = await fetch(`${BASE_URL}/trending/movie/week?language=en-US`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    next: { revalidate: 3600 },
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to fetch trending movies: ${res.status}`);
+  }
+  const data = await res.json();
+  return data.results;
+}
