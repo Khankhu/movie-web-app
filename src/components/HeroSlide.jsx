@@ -20,6 +20,7 @@ export function HeroSlide({ movie }) {
       <Image
         src={`${TMDB_IMAGE_URL}/original${backdrop_path}`}
         alt={title}
+        sizes="100vw"
         fill
         className="object-cover"
       />

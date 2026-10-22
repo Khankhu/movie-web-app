@@ -10,6 +10,7 @@ export function MovieCard({ movie }) {
         <Image
           src={`${TMDB_IMAGE_URL}/w500${poster_path}`}
           alt={title}
+          sizes="15vw"
           fill
           className="object-cover"
         />
