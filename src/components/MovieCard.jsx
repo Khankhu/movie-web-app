@@ -18,7 +18,7 @@ export function MovieCard({ movie }) {
       <div className="flex items-center text-sm text-muted-foreground gap-1">
         <Star className="fill-current size-3.5" />
         <span>
-          {vote_average?.toFixed(1) ?? "N/A"} •{" "}
+          {vote_average ? vote_average.toFixed(1) : "N/A"} •{" "}
           {release_date?.slice(0, 4) ?? "N/A"}
         </span>
       </div>
