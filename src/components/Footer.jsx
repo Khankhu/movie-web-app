@@ -1,11 +1,17 @@
 import { Mail, Phone } from "lucide-react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 import { Logo } from "@/components/Logo";
 
 const SOCIAL_LINKS = [
-  { name: "Facebook", href: "https://facebook.com" },
-  { name: "Instagram", href: "https://instagram.com" },
-  { name: "X", href: "https://x.com" },
-  { name: "Youtube", href: "https://youtube.com" },
+  { name: "Facebook", href: "https://facebook.com", icon: FaFacebook },
+  { name: "Instagram", href: "https://instagram.com", icon: FaInstagram },
+  { name: "X", href: "https://x.com", icon: FaXTwitter },
+  { name: "Youtube", href: "https://youtube.com", icon: FaYoutube },
 ];
 
 export function Footer() {
@@ -43,15 +49,16 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <h3 className="font-bold text-white/85">Follow us:</h3>
             <div className="flex gap-3">
-              {SOCIAL_LINKS.map(({ name, href }) => (
+              {SOCIAL_LINKS.map(({ name, href, icon: Icon }) => (
                 <a
                   key={name}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:underline hover:text-primary"
+                  aria-label={name}
+                  className="hover:text-primary"
                 >
-                  {name}
+                  <Icon className="size-6 transition-colors duration-200" />
                 </a>
               ))}
             </div>
