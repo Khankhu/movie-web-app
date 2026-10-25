@@ -13,6 +13,9 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const ARROW_CLASS_NAME =
+  "disabled:opacity-0 h-24 w-8 bg-black/50 border-0 text-white hover:bg-fuchsia-500 hover:text-white active:scale-90 bottom-14";
+
 export function MovieRow({ movies, heading, description, category }) {
   const [carouselApi, setCarouselApi] = useState(null);
   const [isAtStart, setIsAtStart] = useState(true);
@@ -50,7 +53,7 @@ export function MovieRow({ movies, heading, description, category }) {
         opts={{ slidesToScroll: "auto", dragFree: true }}
         plugins={[WheelGesturesPlugin()]}
         className={cn(
-          "-mx-2",
+          "-mx-2 pr-10",
           !isAtStart && "**:data-[slot=carousel-content]:mask-l-from-93%",
           !isAtEnd && "**:data-[slot=carousel-content]:mask-r-from-93%",
         )}
@@ -62,8 +65,14 @@ export function MovieRow({ movies, heading, description, category }) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-0.5 disabled:opacity-0" />
-        <CarouselNext className="right-0.5 disabled:opacity-0" />
+        <CarouselPrevious
+          disabled={isAtStart}
+          className={cn(ARROW_CLASS_NAME, "left-0.5")}
+        />
+        <CarouselNext
+          disabled={isAtEnd}
+          className={cn(ARROW_CLASS_NAME, "right-0.5")}
+        />
       </Carousel>
     </div>
   );
