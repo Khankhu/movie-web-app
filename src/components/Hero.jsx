@@ -16,7 +16,10 @@ export function Hero({ movies }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     if (!api) return;
-    const handleSelect = () => setCurrentIndex(api.selectedScrollSnap());
+    const handleSelect = () => {
+      setCurrentIndex(api.selectedScrollSnap());
+      api.plugins().autoplay.reset();
+    };
     api.on("select", handleSelect);
     return () => api.off("select", handleSelect);
   }, [api]);
