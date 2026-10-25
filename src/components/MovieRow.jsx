@@ -40,14 +40,14 @@ export function MovieRow({ movies, heading, description, category }) {
         <h2 className="text-3xl font-extrabold tracking-tight">{heading}</h2>
         <Link
           href={`/category/${category}`}
-          className="group text-primary text-sm font-semibold flex items-center gap-1 hover:opacity-80"
+          className="group text-foreground text-sm font-semibold flex items-center gap-1 hover:text-primary transition-colors"
         >
           See all
           <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform duration-200" />
         </Link>
       </div>
 
-      <p className="mb-2.5 text-muted-foreground">{description}</p>
+      <p className="mb-2.5 text-foreground/70 font-medium">{description}</p>
       <Carousel
         setApi={setCarouselApi}
         opts={{ slidesToScroll: "auto", dragFree: true }}
