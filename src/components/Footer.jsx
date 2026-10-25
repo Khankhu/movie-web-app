@@ -56,9 +56,9 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="hover:text-primary"
+                  className="hover:text-primary transition-colors duration-200"
                 >
-                  <Icon className="size-6 transition-colors duration-200" />
+                  <Icon className="size-6" />
                 </a>
               ))}
             </div>
