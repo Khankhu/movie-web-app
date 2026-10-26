@@ -21,7 +21,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="lg"
-            className="rounded-full bg-white/15 transition-colors hover:bg-fuchsia-500 hover:text-white"
+            className="rounded-full border border-white/40 bg-white/30 transition-colors hover:bg-fuchsia-500 hover:text-white"
           >
             <ChevronDown />
             Genre

@@ -27,8 +27,9 @@ export function HeroSlide({ movie }) {
       <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent">
         <div className="h-full flex flex-col justify-center max-w-screen-2xl mx-auto px-5 text-white gap-5">
           <div className="flex flex-col gap-2">
-            <p className="uppercase tracking-widest font-medium text-white/85">
-              Now Playing:
+            <p className="flex items-center gap-3 uppercase tracking-widest font-medium text-white/85">
+              Now Playing{" "}
+              <span className="h-px w-16 bg-white/70" aria-hidden="true"></span>
             </p>
             <h2 className="text-5xl font-extrabold tracking-tight max-w-xl">
               {title} ({year})
