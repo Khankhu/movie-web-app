@@ -54,8 +54,14 @@ const COMMUNITY_LINKS = [
 export function Footer() {
   return (
     <footer className="px-5 relative isolate pt-14 pb-4">
-      <div className="rounded-3xl mx-auto max-w-screen-2xl backdrop-blur-xl backdrop-saturate-150 border border-white/50 shadow-2xl inset-shadow-2xs inset-shadow-white/40 bg-linear-to-br from-violet-300/60 to-fuchsia-200/60 dark:from-violet-950/60 dark:to-fuchsia-950/60">
-        <div className="flex justify-between px-10 text-foreground/70 py-10">
+      <div className="rounded-3xl mx-auto max-w-screen-2xl backdrop-blur-xl backdrop-saturate-150 border border-white/50 shadow-2xl inset-shadow-2xs inset-shadow-white/40 bg-linear-to-br from-violet-300/60 to-fuchsia-200/60 dark:from-violet-950/60 dark:to-fuchsia-950/60 relative overflow-hidden">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-4 -bottom-16 text-[240px] leading-none font-black tracking-wider text-primary/8 select-none"
+        >
+          MOVZ
+        </span>
+        <div className="relative flex justify-between px-10 text-foreground/70 py-10">
           <div className="flex flex-col gap-1">
             <Logo />
             <p>Every story, in one place.</p>
@@ -138,7 +144,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 items-center border-t border-white/40 px-10 py-5 text-sm text-foreground/70">
+        <div className="relative grid grid-cols-3 items-center border-t border-white/40 px-10 py-5 text-sm text-foreground/70">
           <p>© 2026 MOVZ. All rights reserved.</p>
           <a
             href="https://www.themoviedb.org"
